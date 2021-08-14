@@ -1,0 +1,6 @@
+main: dev.appeazethecheese.spartanbridge.Main
+name: SpartanDiscordBridge
+version: '1.0'
+api-version: 1.17
+author: AppeazeTheCheese
+depend: [DiscordSRV, Spartan]

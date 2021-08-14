@@ -1,0 +1,26 @@
+plugins {
+    id 'java'
+}
+
+group 'dev.appeazethecheese.spartandiscordbridge'
+version '1.0'
+
+repositories {
+    mavenCentral()
+
+    maven {
+        url = 'https://hub.spigotmc.org/nexus/content/repositories/snapshots/'
+        name = "Spigot"
+    }
+    maven {
+        url = 'https://oss.sonatype.org/content/repositories/snapshots'
+        name = 'BungeeCord'
+    }
+}
+
+dependencies {
+    compileOnly 'org.spigotmc:spigot-api:1.15.2-R0.1-SNAPSHOT'
+    implementation files("lib/DiscordSRV.jar")
+    implementation files("lib/SpartanAPI.jar")
+    implementation files("lib/craftbukkit-1.17.jar")
+}
