@@ -61,6 +61,7 @@ public class EventHandler implements Listener {
         builder.setColor(GetColor(violation));
         builder.addField("Hack", hack.toString(), false);
         builder.addField("Ping", String.valueOf(player.getPing()), false);
+        builder.addField("World", player.getWorld().getName(), true);
         builder.addField("Location", "X:" + pos.getX() + " Y:" + pos.getY() + " Z:" + pos.getZ() + "\n" +
                 "Pitch:" + pos.getPitch() + " Yaw:" + pos.getYaw(), false);
         builder.addField("Status", GetStatus(violation),false);
