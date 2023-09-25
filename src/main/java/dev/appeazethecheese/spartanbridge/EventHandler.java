@@ -14,6 +14,7 @@ import org.bukkit.event.Listener;
 import org.bukkit.scheduler.BukkitRunnable;
 
 import java.awt.*;
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
@@ -52,8 +53,9 @@ public class EventHandler implements Listener {
             return;
 
         Role role = DiscordUtil.getRole(StaffRoleID);
-        boolean pingStaff = role != null && ShouldPingStaff(player.getUniqueId(), hack, violation);
+        boolean pingStaff = role != null && role.isMentionable() && ShouldPingStaff(player.getUniqueId(), hack, violation);
         Location pos = player.getLocation();
+        var df = new DecimalFormat("####0.000");
 
         EmbedBuilder builder = new EmbedBuilder();
         builder.setTitle(player.getName());
@@ -62,8 +64,8 @@ public class EventHandler implements Listener {
         builder.addField("Hack", hack.toString(), false);
         builder.addField("Ping", String.valueOf(player.getPing()), false);
         builder.addField("World", player.getWorld().getName(), true);
-        builder.addField("Location", "X:" + pos.getX() + " Y:" + pos.getY() + " Z:" + pos.getZ() + "\n" +
-                "Pitch:" + pos.getPitch() + " Yaw:" + pos.getYaw(), false);
+        builder.addField("Location", "X:" + df.format(pos.getX()) + " Y:" + df.format(pos.getY()) + " Z:" + df.format(pos.getZ()) + "\n" +
+                "Pitch:" + df.format(pos.getPitch()) + " Yaw:" + df.format(pos.getYaw()), false);
         builder.addField("Status", GetStatus(violation),false);
         builder.addField("Message", message, false);
         MessageEmbed embed = builder.build();
