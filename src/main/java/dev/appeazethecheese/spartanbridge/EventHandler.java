@@ -113,7 +113,7 @@ public class EventHandler implements Listener {
                 public void run() {
                     PingsByPlayer.get(playerId).remove(type);
                 }
-            }.runTaskLater(Main.Instance, 1000*60*60); // Runs after an hour
+            }.runTaskLater(Main.Instance, 20*60*60); // Runs after an hour
             return true;
         }
         return false;
